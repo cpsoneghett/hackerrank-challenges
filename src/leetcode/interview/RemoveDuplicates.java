@@ -4,25 +4,16 @@ public class RemoveDuplicates {
 
     public static int removeDuplicates(int[] nums) {
 
-        int i = 0, j = 1;
-        int val = nums[0];
+        if (nums.length == 0)
+            return 0;
 
-        while (j < nums.length) {
+        int j = 0;
 
-            if(nums[j]!=val) {
-                swap(nums, i, j);
-                i++;
-            }
-            j++;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[j] != nums[i])
+                nums[++j] = nums[i];
         }
-
-        int k = i-1;
-        int counter = 0;
-        for (int l = 0; l <= k; l++) {
-            counter++;
-        }
-
-        return counter;
+        return j + 1;
     }
 
     private static void swap(int[] nums, int a, int b) {
@@ -32,7 +23,9 @@ public class RemoveDuplicates {
     }
 
     public static void main(String[] args) {
-        int[] nums = {1,1,2};
+        int[] nums = {1, 1, 2, 3, 3, 4, 5, 5};
+        // 1 1 2 3 3 4 5 0
+        //
         //int[] nums2 = {3, 2, 2, 3};
 
         System.out.println(removeDuplicates(nums));
